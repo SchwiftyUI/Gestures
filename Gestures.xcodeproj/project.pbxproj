@@ -14,6 +14,11 @@
 		DE37344F2394B63500BE1CAD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE37344E2394B63500BE1CAD /* Preview Assets.xcassets */; };
 		DE3734522394B63500BE1CAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3734502394B63500BE1CAD /* LaunchScreen.storyboard */; };
 		DE37345A2394B63D00BE1CAD /* LogoDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3734592394B63D00BE1CAD /* LogoDrawing.swift */; };
+		DE37345F2394B84C00BE1CAD /* Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37345E2394B84C00BE1CAD /* Tap.swift */; };
+		DE3734612394B9A700BE1CAD /* LongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3734602394B9A700BE1CAD /* LongPress.swift */; };
+		DE3734632394BB8B00BE1CAD /* Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3734622394BB8B00BE1CAD /* Drag.swift */; };
+		DE3734652394BDB900BE1CAD /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3734642394BDB900BE1CAD /* Rotation.swift */; };
+		DE3734672394BF5E00BE1CAD /* Magnification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3734662394BF5E00BE1CAD /* Magnification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		DE3734512394B63500BE1CAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE3734532394B63500BE1CAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE3734592394B63D00BE1CAD /* LogoDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoDrawing.swift; sourceTree = "<group>"; };
+		DE37345E2394B84C00BE1CAD /* Tap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tap.swift; sourceTree = "<group>"; };
+		DE3734602394B9A700BE1CAD /* LongPress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPress.swift; sourceTree = "<group>"; };
+		DE3734622394BB8B00BE1CAD /* Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drag.swift; sourceTree = "<group>"; };
+		DE3734642394BDB900BE1CAD /* Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
+		DE3734662394BF5E00BE1CAD /* Magnification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magnification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				DE3734592394B63D00BE1CAD /* LogoDrawing.swift */,
+				DE37345E2394B84C00BE1CAD /* Tap.swift */,
+				DE3734602394B9A700BE1CAD /* LongPress.swift */,
+				DE3734622394BB8B00BE1CAD /* Drag.swift */,
+				DE3734642394BDB900BE1CAD /* Rotation.swift */,
+				DE3734662394BF5E00BE1CAD /* Magnification.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,9 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE3734462394B63400BE1CAD /* AppDelegate.swift in Sources */,
+				DE3734652394BDB900BE1CAD /* Rotation.swift in Sources */,
+				DE3734672394BF5E00BE1CAD /* Magnification.swift in Sources */,
 				DE37345A2394B63D00BE1CAD /* LogoDrawing.swift in Sources */,
+				DE37345F2394B84C00BE1CAD /* Tap.swift in Sources */,
 				DE3734482394B63400BE1CAD /* SceneDelegate.swift in Sources */,
 				DE37344A2394B63400BE1CAD /* ContentView.swift in Sources */,
+				DE3734612394B9A700BE1CAD /* LongPress.swift in Sources */,
+				DE3734632394BB8B00BE1CAD /* Drag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
