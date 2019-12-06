@@ -21,6 +21,11 @@ struct ContentView: View {
                     NavigationLink(destination: Rotation()) { Text("Rotation Gesture")}
                     NavigationLink(destination: Magnification()) { Text("Magnification Gesture")}
                 }
+                Section(header: Text("Composed Gestures")) {
+                    NavigationLink(destination: Simultaneous()) { Text("Simultaneous Gesture")}
+                    NavigationLink(destination: Exclusive()) { Text("Exclusive Gesture")}
+                    NavigationLink(destination: Sequence()) { Text("Sequence Gesture")}
+                }
             }
         }
     }
