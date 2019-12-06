@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct Exclusive: View {
-    enum LongPressState {
+    enum ExclusiveState {
         case inactive
         case pressing
+        case dragging(translation: CGSize)
         
         var scale: CGFloat {
             switch self {
@@ -21,11 +22,6 @@ struct Exclusive: View {
                 return 1.0
             }
         }
-    }
-    
-    enum DragState {
-        case inactive
-        case dragging(translation: CGSize)
         
         var translation: CGSize {
             switch self {
@@ -37,46 +33,62 @@ struct Exclusive: View {
         }
     }
     
-    @GestureState var dragState = DragState.inactive
+    @GestureState var exclusiveState = ExclusiveState.inactive
+    @State var tapCount = 0.0
     @State var viewDragState = CGSize.zero
     
-    @GestureState var longPressState = LongPressState.inactive
-    @State var tapCount = 0.0
+    var translationOffset: CGSize {
+        return CGSize(width: viewDragState.width + exclusiveState.translation.width, height: viewDragState.height + exclusiveState.translation.height)
+    }
     
     var rotationAngle: Angle {
         return Angle(degrees: 90 * tapCount)
     }
     
-    var translationOffset: CGSize {
-        return CGSize(width: viewDragState.width + dragState.translation.width, height: viewDragState.height + dragState.translation.height)
-    }
-    
     var body: some View {
         
         let longPressGesture = LongPressGesture(minimumDuration: 0.5, maximumDistance: 100)
-            .updating($longPressState) { value, state, transaction in
-                state = .pressing
-            }.onEnded { value in
-                withAnimation {
-                    self.tapCount += 1
-                }
-            }
+//            .updating($longPressState) { value, state, transaction in
+//                state = .pressing
+//            }.onEnded { value in
+//                withAnimation {
+//                    self.tapCount += 1
+//                }
+//            }
         
         let dragGesture = DragGesture(minimumDistance: 10)
-            .updating($dragState) { value, state, transaction in
-                state = .dragging(translation: value.translation)
-            }.onEnded { value in
-                self.viewDragState.height += value.translation.height
-                self.viewDragState.width += value.translation.width
-            }
+//            .updating($dragState) { value, state, transaction in
+//                state = .dragging(translation: value.translation)
+//            }.onEnded { value in
+//                self.viewDragState.height += value.translation.height
+//                self.viewDragState.width += value.translation.width
+//            }
         
         let exclusive = ExclusiveGesture(longPressGesture, dragGesture)
+            .updating($exclusiveState) { value, state, transation in
+                switch value {
+                case .first(_):
+                    state = .pressing
+                case .second(let dragValue):
+                    state = .dragging(translation: dragValue.translation)
+                }
+            }.onEnded { value in
+                switch value {
+                case .first(_):
+                    withAnimation {
+                        self.tapCount += 1
+                    }
+                case .second(let dragValue):
+                    self.viewDragState.height += dragValue.translation.height
+                    self.viewDragState.width += dragValue.translation.width
+                }
+            }
         
         return LogoDrawing()
             .frame(width: 350, height: 650)
             .rotationEffect(rotationAngle)
             .offset(translationOffset)
-            .scaleEffect(longPressState.scale)
+            .scaleEffect(exclusiveState.scale)
             .gesture(exclusive)
     }
 }
